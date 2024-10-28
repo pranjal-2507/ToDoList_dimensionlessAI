@@ -1,7 +1,8 @@
 # DOSIVE - React To-Do List Application
 
 A simple, sleek to-do list application built with React, designed to help you organize tasks effectively. This project features a sidebar for task lists, a main content area to add and view tasks, and a calendar with sorting options.
----
+
+
 
 ## Features
 
