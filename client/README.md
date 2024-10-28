@@ -1,8 +1,18 @@
-# React + Vite
+# DOSIVE - React To-Do List Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, sleek to-do list application built with React, designed to help you organize tasks effectively. This project features a sidebar for task lists, a main content area to add and view tasks, and a calendar with sorting options.
+---
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Task Lists: Organize tasks by different categories like "Life," "Work," or custom lists.
+- Add and Manage Tasks: Add new tasks with a date and tag, view all tasks, and mark as complete.
+- Calendar View: Visual calendar to select dates and filter tasks.
+- Sort Options: Sort tasks by date, priority, or tags for easy navigation.
+- Responsive Design: A modern, responsive UI that works on desktops and mobile devices.
+--- 
+
+
+## Technologies Used
+Frontend: React
+Styling: Custom CSS
