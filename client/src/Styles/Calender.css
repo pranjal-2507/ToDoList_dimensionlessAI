@@ -1,11 +1,14 @@
-/* Wrapper for the Calendar Component */
+/* Base styles for Calendar Component */
 .calendar {
-  width: 280px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #2b2b2b; /* Dark gray background */
+  background-color: #2b2b2b;
   color: black;
   border-radius: 10px;
   font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 /* Header for Month and Navigation */
@@ -13,53 +16,116 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  color: black
+  color: black;
 }
 
 .react-calendar__navigation button {
   background: none;
-  color: #e0e0e0; /* Light gray */
-  font-size: 1.2em;
+  color: #e0e0e0;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   cursor: pointer;
+  padding: 8px;
+  border: none;
 }
 
 .react-calendar__navigation button:disabled {
-  color: #6e6e6e; /* Disabled buttons in darker gray */
+  color: #6e6e6e;
 }
 
 /* Weekday Headers */
-.react-calendar__month-view__weekdays {
+.react-calendar_month-view_weekdays {
   text-align: center;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
-.react-calendar__month-view__weekdays__weekday {
-  color: #8c8c8c; /* Medium gray for weekday names */
+.react-calendar_month-viewweekdays_weekday {
+  color: #8c8c8c;
   font-weight: bold;
+  padding: 8px 0;
 }
 
 /* Calendar Dates */
 .react-calendar__tile {
-  padding: 15px;
-  font-size: 0.9em;
+  padding: clamp(8px, 2vw, 15px);
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
   text-align: center;
   color: black;
   background: none;
-  border-radius: 50%; /* Circular style */
+  border-radius: 50%;
   transition: background-color 0.3s ease;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Today’s Date Highlight */
+/* Today's Date Highlight */
 .highlight-today {
-  background-color: #ffd700; /* Bright yellow for today’s date */
-  color: #2b2b2b; /* Dark text on yellow */
+  background-color: #ffd700;
+  color: #2b2b2b;
   font-weight: bold;
 }
-
 
 /* Custom Deadline Highlight */
 .highlight-deadline {
-  background-color: #555555; /* Medium gray for deadlines */
-  color: #ffd700; /* Yellow text on deadline */
+  background-color: #555555;
+  color: #ffd700;
   font-weight: bold;
 }
 
+/* Mobile-specific styles */
+@media screen and (max-width: 480px) {
+  .calendar {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .react-calendar__navigation button {
+    padding: 4px;
+  }
+
+  .react-calendar__tile {
+    padding: 6px;
+  }
+
+  /* Improve touch targets on mobile */
+  .react-calendar__navigation button,
+  .react-calendar__tile {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 320px) {
+  .calendar {
+    padding: 5px;
+  }
+
+  .react-calendar__navigation {
+    margin-bottom: 5px;
+  }
+
+  .react-calendar__tile {
+    padding: 4px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .calendar {
+    max-width: 90vh;
+    padding: 10px;
+  }
+
+  .react-calendar__tile {
+    padding: 4px;
+  }
+}
+
+/* Ensure calendar fits in viewport */
+@media screen and (min-width: 768px) {
+  .calendar {
+    max-width: 600px;
+  }
+}
