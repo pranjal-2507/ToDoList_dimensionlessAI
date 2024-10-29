@@ -1,29 +1,42 @@
+// CalendarComponent.js
 import React from 'react';
-import '../Styles/Calender.css';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import '../Styles/Calender.css'; 
 
-const Calendar = () => {
+const CalendarComponent = ({ todos = [] }) => { // Default to empty array if todos is undefined
+  const today = new Date();
+
+  // Map over todos to extract deadlines safely
+  const deadlines = todos.map(todo => new Date(todo.deadline));
+
+  const tileClassName = ({ date, view }) => {
+    if (view === 'month') {
+      if (
+        date.getDate() === today.getDate() &&
+        date.getMonth() === today.getMonth() &&
+        date.getFullYear() === today.getFullYear()
+      ) {
+        return 'highlight-today';
+      }
+
+      if (
+        deadlines.some(d => 
+          d.getDate() === date.getDate() &&
+          d.getMonth() === date.getMonth() &&
+          d.getFullYear() === date.getFullYear()
+        )
+      ) {
+        return 'highlight-deadline';
+      }
+    }
+  };
+
   return (
-    <div className="calendar">
-      <div className="calendar-header">
-        <h3>2023</h3>
-        <p>Feb</p>
-      </div>
-      <div className="calendar-body">
-        {/* Render a simple calendar grid */}
-        <div className="calendar-grid">
-          {Array.from({ length: 28 }, (_, i) => (
-            <div key={i} className="calendar-day">{i + 1}</div>
-          ))}
-        </div>
-      </div>
-      <div className="sort-method">
-        <h4>Sort Method</h4>
-        <button>Date</button>
-        <button>Priority</button>
-        <button>Tag</button>
-      </div>
+    <div>
+      <Calendar tileClassName={tileClassName} />
     </div>
   );
 };
 
-export default Calendar;
+export default CalendarComponent;
