@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../Styles/Signup.css";
-import { useNavigate, Link} from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -20,7 +19,8 @@ const Signup = () => {
     e.preventDefault();
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordPattern =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (!emailPattern.test(email)) {
       alert("Please enter a valid email address.");
@@ -28,18 +28,22 @@ const Signup = () => {
     }
 
     if (!passwordPattern.test(password)) {
-      alert("Password must be at least 8 characters long and include a letter, a number, and a special character.");
+      alert(
+        "Password must be at least 8 characters long and include a letter, a number, and a special character."
+      );
       return;
     }
 
-    // Proceed with the signup process (e.g., API call)
     alert("Signup successful!");
+    navigate('/')
   };
 
   return (
     <div className="signup-container">
       <h2 className="signup-heading">Welcome to 📜 DOSIVE</h2>
-      <p className="signup-subheading">Sign up to manage your tasks efficiently.</p>
+      <p className="signup-subheading">
+        Sign up to manage your tasks efficiently.
+      </p>
 
       <form className="signup-form" onSubmit={handleSignup}>
         <input
@@ -49,7 +53,7 @@ const Signup = () => {
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          onBlur={handleUsernameBlur} 
+          onBlur={handleUsernameBlur}
         />
         <input
           type="email"
@@ -67,14 +71,16 @@ const Signup = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="signup-button">Sign Up</button>
+        <button type="submit" className="signup-button">
+          Sign Up
+        </button>
       </form>
 
       <div className="login-link">
         Already have an account?{" "}
-        <Link to='/login'><span >
-          Log In
-        </span></Link>
+        <Link to="/login">
+          <span>Log In</span>
+        </Link>
       </div>
     </div>
   );
