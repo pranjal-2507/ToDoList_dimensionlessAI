@@ -6,12 +6,14 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   const handleLogin = (e) => {
     e.preventDefault();
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordPattern =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (!emailPattern.test(email)) {
       alert("Please enter a valid email address.");
@@ -19,18 +21,22 @@ const Login = () => {
     }
 
     if (!passwordPattern.test(password)) {
-      alert("Password must be at least 8 characters long and include a letter, a number, and a special character.");
+      alert(
+        "Password must be at least 8 characters long and include a letter, a number, and a special character."
+      );
       return;
     }
 
-    // Submit form logic here (e.g., API call)
     alert("Login successful!");
+    navigate('/')
   };
 
   return (
     <div className="login-container">
       <h2 className="login-heading">Welcome Back to 📜 DOSIVE</h2>
-      <p className="login-subheading">Log in to manage your tasks efficiently.</p>
+      <p className="login-subheading">
+        Log in to manage your tasks efficiently.
+      </p>
 
       <form className="login-form" onSubmit={handleLogin}>
         <input
@@ -49,14 +55,16 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="login-button">Log In</button>
+        <button type="submit" className="login-button">
+          Log In
+        </button>
       </form>
 
       <div className="signup-link">
         Don't have an account?{" "}
-        <Link to='/signup'><span >
-          Sign Up
-        </span></Link>
+        <Link to="/signup">
+          <span>Sign Up</span>
+        </Link>
       </div>
     </div>
   );

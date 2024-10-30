@@ -39,7 +39,6 @@ const App = () => {
           status: todo.completed ? "completed" : "pending",
           date: new Date().toISOString().split("T")[0],
         }));
-        console.log(response.data);
         setTodos(todosWithMediumPriority);
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -52,16 +51,15 @@ const App = () => {
 
   const handleAddTodo = (e) => {
     e.preventDefault();
-  
-    // Define a regex pattern to allow only text or text mixed with numbers (e.g., "task123").
+
     const validTextPattern = /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]*$/;
-  
-    // Check if the input is empty or doesn't match the allowed pattern.
     if (!newTodo.trim() || !validTextPattern.test(newTodo)) {
-      alert("Please enter valid text. Only letters or letters mixed with numbers are allowed.");
+      alert(
+        "Please enter valid text. Only letters or letters mixed with numbers are allowed."
+      );
       return;
     }
-  
+
     const newTodoItem = {
       id: todos.length + 1,
       date: selectedDate.toISOString().split("T")[0],
@@ -71,11 +69,10 @@ const App = () => {
       priority: newPriority,
       completed: false,
     };
-  
+
     setTodos([...todos, newTodoItem]);
     setNewTodo("");
   };
-  
 
   const toggleTaskCompletion = (id) => {
     setTodos(
@@ -129,8 +126,8 @@ const App = () => {
   };
 
   const handleDeleteAll = () => {
-    setTodos([])
-  }
+    setTodos([]);
+  };
 
   return (
     <div className={`app ${darkMode ? "dark-mode" : "light-mode"}`}>
@@ -198,9 +195,14 @@ const App = () => {
             ))}
           </div>
           <div>
-            <button className="category-button" onClick={()=>{
-              handleDeleteAll()
-            }}>Delete All</button>
+            <button
+              className="category-button"
+              onClick={() => {
+                handleDeleteAll();
+              }}
+            >
+              Delete All
+            </button>
           </div>
         </div>
 
