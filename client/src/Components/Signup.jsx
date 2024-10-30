@@ -9,7 +9,8 @@ const Signup = () => {
   const [password, setPassword] = useState("");
 
   const handleUsernameBlur = () => {
-    const usernamePattern = /^[a-zA-Z0-9]{3,15}$/;
+    const usernamePattern = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{3,15}$/;
+
     if (username && !usernamePattern.test(username)) {
       alert("Username must be 3-15 characters long and contain only letters.");
     }
