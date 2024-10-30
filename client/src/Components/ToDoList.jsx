@@ -210,6 +210,7 @@ const App = () => {
         <form onSubmit={handleAddTodo} className="todo-form">
           <div className="form-content">
             <input
+              placeholder="dd-mm-yyyy"
               type="date"
               className="date-input"
               onChange={(e) => setSelectedDate(new Date(e.target.value))}
@@ -218,12 +219,12 @@ const App = () => {
               value={newPriority}
               onChange={(e) => setNewPriority(e.target.value)}
               className="priority-select"
-              defaultValue={"medium"}
             >
               <option value="high">High Priority</option>
               <option value="medium">Medium Priority</option>
               <option value="low">Low Priority</option>
             </select>
+
             <input
               type="text"
               value={newTodo}
