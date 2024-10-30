@@ -52,8 +52,16 @@ const App = () => {
 
   const handleAddTodo = (e) => {
     e.preventDefault();
-    if (!newTodo.trim()) return;
-
+  
+    // Define a regex pattern to allow only text or text mixed with numbers (e.g., "task123").
+    const validTextPattern = /^(?=.*[a-zA-Z])[a-zA-Z0-9\s]*$/;
+  
+    // Check if the input is empty or doesn't match the allowed pattern.
+    if (!newTodo.trim() || !validTextPattern.test(newTodo)) {
+      alert("Please enter valid text. Only letters or letters mixed with numbers are allowed.");
+      return;
+    }
+  
     const newTodoItem = {
       id: todos.length + 1,
       date: selectedDate.toISOString().split("T")[0],
@@ -63,10 +71,11 @@ const App = () => {
       priority: newPriority,
       completed: false,
     };
-
+  
     setTodos([...todos, newTodoItem]);
     setNewTodo("");
   };
+  
 
   const toggleTaskCompletion = (id) => {
     setTodos(
@@ -199,7 +208,7 @@ const App = () => {
         <form onSubmit={handleAddTodo} className="todo-form">
           <div className="form-content">
             <input
-              type="datetime-local"
+              type="date"
               className="date-input"
               onChange={(e) => setSelectedDate(new Date(e.target.value))}
             />
